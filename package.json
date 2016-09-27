@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/valentin-nemcev/qe-frontend-lint-config/issues"
   },
-  "homepage": "https://github.com/valentin-nemcev/qe-frontend-lint-config#readme"
+  "homepage": "https://github.com/valentin-nemcev/qe-frontend-lint-config#readme",
+  "peerDependencies": {
+    "eslint": "^3.5.0",
+    "eslint-plugin-import": "^1.15.0"
+  }
 }
