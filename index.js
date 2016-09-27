@@ -9,14 +9,9 @@ module.exports = {
     },
     plugins: ['import'],
     settings: {
-        'import/resolver': {
-            webpack: {
-                config: 'build/webpack.config.babel.js',
-            },
-        },
         'import/ignore': [
-            /node_modules\/(?!qex-controls\/lib)/,
-            /\.(json|less|png)$/,
+            /node_modules/,
+            /\.(?!js$)[^.]+$/, // ignore everything but .js files
         ],
     },
 
