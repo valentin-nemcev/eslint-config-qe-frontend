@@ -1,5 +1,5 @@
 {
-  "name": "qe-frontend-lint-config",
+  "name": "eslint-config-qe-frontend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
