@@ -19,6 +19,6 @@
   "peerDependencies": {
     "eslint": "^3.5.0",
     "eslint-plugin-import": "^1.15.0",
-    "babel-eslint": "^babel-eslint"
+    "babel-eslint": "^6.1.2"
   }
 }
