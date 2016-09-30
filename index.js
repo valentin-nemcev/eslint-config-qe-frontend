@@ -222,7 +222,7 @@ module.exports = {
         'no-trailing-spaces': 'warn',
 
         // enforce a maximum line length
-        'max-len': ['warn', 80],
+        'max-len': ['warn', { code: 80, ignoreComments: true }],
 
 
         // Quoting Style for Property Names
