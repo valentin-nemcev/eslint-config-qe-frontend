@@ -3,11 +3,10 @@ module.exports = {
         browser: true,
         es6: true,
     },
-    parser: 'babel-eslint',
+    plugins: ['import'],
     parserOptions: {
         sourceType: 'module',
     },
-    plugins: ['import'],
     settings: {
         'import/ignore': [
             /node_modules/,
@@ -93,7 +92,7 @@ module.exports = {
         'no-unused-vars': [
             'error',
             {
-                varsIgnorePattern: '^\\$Conkitty',
+                varsIgnorePattern: '(^\\$Conkitty|^_$)',
                 args: 'after-used'
             },
         ],
