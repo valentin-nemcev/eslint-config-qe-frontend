@@ -224,8 +224,12 @@ module.exports = {
         'max-len': ['warn', { code: 80, ignoreComments: true }],
 
 
+        // enforce the consistent use of either backticks, double, or single quotes
+        'quotes': ['error', 'single', { 'avoidEscape': true }],
+
+
         // Quoting Style for Property Names
-        'quote-props': ['error', 'consistent-as-needed'],
+        'quote-props': ['error', 'as-needed'],
 
         // Require Object Literal Shorthand Syntax
         'object-shorthand': ['error', 'always', { avoidQuotes: true }],
