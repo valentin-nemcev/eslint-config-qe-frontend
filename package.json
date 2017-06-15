@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "eslint --print-config --config index.js ."
+    "postversion": "git push --follow-tags"
   },
   "repository": {
     "type": "git",
