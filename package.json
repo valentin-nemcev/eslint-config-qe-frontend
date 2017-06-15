@@ -17,8 +17,8 @@
   },
   "homepage": "https://github.com/valentin-nemcev/qe-frontend-lint-config#readme",
   "dependencies": {
-    "babel-eslint": "7.1.1",
-    "eslint": "3.15.0",
-    "eslint-plugin-import": "2.2.0"
+    "babel-eslint": "7.2.3",
+    "eslint": "3.19.0",
+    "eslint-plugin-import": "2.3.0"
   }
 }
