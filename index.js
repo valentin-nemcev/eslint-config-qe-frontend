@@ -90,7 +90,7 @@ module.exports = {
 
         // disallow unused variables
         'no-unused-vars': [
-            'error',
+            'warn',
             {
                 varsIgnorePattern: '(^\\$Conkitty|^_$)',
                 args: 'after-used'
@@ -113,7 +113,7 @@ module.exports = {
         'no-var': 'error',
 
         // require const declarations for variables that are never reassigned after declared
-        'prefer-const': 'error',
+        'prefer-const': 'warn',
 
         // disallow assignment operators in conditional expressions
         'no-cond-assign': 'error',
@@ -142,7 +142,7 @@ module.exports = {
 
         // disallow empty block statements
         'no-empty': [
-            'error',
+            'warn',
             {allowEmptyCatch: true}
         ],
 
