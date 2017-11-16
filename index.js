@@ -165,6 +165,9 @@ module.exports = {
         // disallow irregular whitespace outside of strings and comments
         'no-irregular-whitespace': 'error',
 
+        // Disallow multiple spaces
+        'no-multi-spaces': 'error',
+
         // disallow negating the left operand in in expressions
         'no-negated-in-lhs': 'error',
 
