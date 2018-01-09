@@ -88,6 +88,15 @@ module.exports = {
         'strict': 'error',
 
 
+        // Disallow Unused Expressions
+        'no-unused-expressions': [
+            'error',
+            {
+                allowShortCircuit: true,
+                allowTernary: true,
+            }
+        ],
+
         // disallow unused variables
         'no-unused-vars': [
             'warn',
@@ -111,6 +120,9 @@ module.exports = {
 
         // require let or const instead of var
         'no-var': 'error',
+
+        // enforce variables to be declared either together or separately in functions
+        'one-var': ['error', 'never'],
 
         // require const declarations for variables that are never reassigned after declared
         'prefer-const': 'warn',
@@ -167,6 +179,9 @@ module.exports = {
 
         // Disallow multiple spaces
         'no-multi-spaces': 'error',
+
+        // require spacing around infix operators
+        'space-infix-ops': 'error',
 
         // disallow negating the left operand in in expressions
         'no-negated-in-lhs': 'error',
