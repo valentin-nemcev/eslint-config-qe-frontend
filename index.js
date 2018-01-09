@@ -102,6 +102,7 @@ module.exports = {
             'warn',
             {
                 varsIgnorePattern: '(^\\$Conkitty|^_$)',
+                argsIgnorePattern: '(^\\$Conkitty|^_$)',
                 args: 'after-used'
             },
         ],
