@@ -107,6 +107,15 @@ module.exports = {
             },
         ],
 
+        // error when it encounters a reference to an identifier that has not yet been declared
+        'no-use-before-define': [
+            'error',
+            {
+                functions: false,
+                classes: false,
+                variables: false
+            },
+        ],
         // disallow function or var declarations in nested blocks
         'no-inner-declarations': 'error',
 
@@ -146,7 +155,6 @@ module.exports = {
         // disallow duplicate arguments in function definitions
         'no-dupe-args': 'error',
 
-
         // disallow duplicate keys in object literals
         'no-dupe-keys': 'error',
 
@@ -175,12 +183,6 @@ module.exports = {
         // Enforce or Disallow Semicolons (semi)
         'semi': ['error', 'always'],
 
-        // disallow irregular whitespace outside of strings and comments
-        'no-irregular-whitespace': 'error',
-
-        // Disallow multiple spaces
-        'no-multi-spaces': 'error',
-
         // require spacing around infix operators
         'space-infix-ops': 'error',
 
@@ -198,6 +200,15 @@ module.exports = {
 
         // disallow confusing multiline expressions
         'no-unexpected-multiline': 'error',
+
+        // enforces newlines between the operands of a ternary expression if the expression spans multiple lines.
+        // 'multiline-ternary': ['error', 'always-multiline'],
+
+        // enforce consistent linebreak style for operators
+        'operator-linebreak': ['error', 'before'],
+
+        // require or disallow spaces before/after unary operators
+        'space-unary-ops': ['error', {'words': true, 'nonwords': false}],
 
         // disallow control flow statements in finally blocks
         'no-unsafe-finally': 'error',
@@ -224,6 +235,15 @@ module.exports = {
         'no-this-before-super': 'error',
 
 
+        // Require using arrow functions for callbacks 
+        'prefer-arrow-callback': 'error',
+
+        // enforces no braces where they can be omitted
+        'arrow-body-style': ['error', 'as-needed'],
+
+        // allows omitting parens when there is only one argument
+        'arrow-parens': ['error', 'as-needed'],
+
         // Require file to end with single newline
         'eol-last': ['warn'],
 
@@ -235,9 +255,6 @@ module.exports = {
 
         // enforce consistent indentation
         'indent': ['warn', 4],
-
-        // disallow trailing whitespace at the end of lines
-        'no-trailing-spaces': 'warn',
 
         // enforce a maximum line length
         'max-len': ['warn', { code: 80, ignoreComments: true }],
@@ -256,6 +273,21 @@ module.exports = {
         // Require Brace Style
         'brace-style': ['error', '1tbs', { allowSingleLine: true }],
 
+
+        // disallow trailing whitespace at the end of lines
+        'no-trailing-spaces': 'warn',
+
+        // disallow irregular whitespace outside of strings and comments
+        'no-irregular-whitespace': 'error',
+
+        // Disallow multiple spaces
+        'no-multi-spaces': 'error',
+
+        // consistent spacing inside array brackets
+        'array-bracket-spacing': ['error', 'never'],
+
+        // enforce consistent spacing inside braces of object literals, destructuring assignments, and import/export specifiers 
+        'object-curly-spacing': ['error', 'never'],
 
         //enforce consistent spacing between keys and values in object literal properties
         'key-spacing': 'error',
