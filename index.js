@@ -3,11 +3,23 @@ module.exports = {
         browser: true,
         es6: true,
     },
-    plugins: ['import'],
+    plugins: ['import', 'filenames', 'promise', 'sonarjs'],
     parserOptions: {
         sourceType: 'module',
     },
     settings: {
+        'import/resolver': {
+            webpack: {
+                // using actual webpack config is impossible, we just duplicate relevant aliases
+                config: {
+                    resolve: {
+                        alias: {
+                            fc: 'frontend-commons',
+                        },
+                    },
+                },
+            },
+        },
         'import/ignore': [
             /node_modules/,
             /\.(?!js$)[^.]+$/, // ignore everything but .js files
@@ -83,9 +95,60 @@ module.exports = {
         // Forbid the use of mutable exports with var or let.
         'import/no-mutable-exports': 'error',
 
+        // no resolvable path back to this module via its dependencies
+        'import/no-cycle': 'error',
+
+        // reports any imports that come after non-import statements.
+        'import/first': 'error',
+
+        // Enforces having one or more empty lines after the last top-level import statement or require call.
+        'import/newline-after-import': 'error',
+
+
+        // Newline before export
+        'padding-line-between-statements': [
+            'error',
+            {blankLine: 'always', prev: '*', next: 'export'},
+            {blankLine: 'never', prev: 'export', next: 'export'},
+        ],
+
+
+        'import/order': [
+            'error',
+            {
+                groups: [
+                    'builtin',
+                    'external',
+                    'internal',
+                    'parent',
+                    'index',
+                    'sibling',
+                ],
+                'newlines-between': 'always',
+            },
+        ],
+
+        // When there is only a single export from a module, prefer using default export over named export.
+        'import/prefer-default-export': 'error',
+
+        // Reports if a module's default export is unnamed
+        'import/no-anonymous-default-export': [
+            'error',
+            {allowCallExpression: false},
+        ],
+
+        // enforces that all exports are declared at the bottom of the file
+        'import/exports-last': 'error',
+
+        // Reports when named exports are not grouped together in a single export
+        'import/group-exports': 'error',
+
+        // Match the file name against the default exported value in the module.
+        'filenames/match-exported': 'error',
+
 
         // require or disallow strict mode directives
-        'strict': 'error',
+        strict: 'error',
 
 
         // Disallow Unused Expressions
@@ -94,7 +157,7 @@ module.exports = {
             {
                 allowShortCircuit: true,
                 allowTernary: true,
-            }
+            },
         ],
 
         // disallow unused variables
@@ -103,7 +166,7 @@ module.exports = {
             {
                 varsIgnorePattern: '(^\\$Conkitty|^_$)',
                 argsIgnorePattern: '(^\\$Conkitty|^_$)',
-                args: 'after-used'
+                args: 'after-used',
             },
         ],
 
@@ -113,7 +176,7 @@ module.exports = {
             {
                 functions: false,
                 classes: false,
-                variables: false
+                variables: false,
             },
         ],
         // disallow function or var declarations in nested blocks
@@ -122,7 +185,8 @@ module.exports = {
         // disallow deleting variables
         'no-delete-var': 'error',
 
-        // disallow the use of undeclared variables unless mentioned in /*global */ comments
+        // disallow the use of undeclared variables
+        // unless mentioned in /*global */ comments
         'no-undef': 'error',
 
         // disallow reassigning const variables
@@ -164,7 +228,7 @@ module.exports = {
         // disallow empty block statements
         'no-empty': [
             'warn',
-            {allowEmptyCatch: true}
+            {allowEmptyCatch: true},
         ],
 
         // disallow unnecessary boolean casts
@@ -174,14 +238,14 @@ module.exports = {
         'no-extra-parens': [
             'error',
             'all',
-            {returnAssign: false, conditionalAssign: false}
+            {returnAssign: false, conditionalAssign: false},
         ],
 
         // disallow unnecessary semicolons
         'no-extra-semi': 'error',
 
         // Enforce or Disallow Semicolons (semi)
-        'semi': ['error', 'always'],
+        semi: ['error', 'always'],
 
         // require spacing around infix operators
         'space-infix-ops': 'error',
@@ -208,7 +272,7 @@ module.exports = {
         'operator-linebreak': ['error', 'before'],
 
         // require or disallow spaces before/after unary operators
-        'space-unary-ops': ['error', {'words': true, 'nonwords': false}],
+        'space-unary-ops': ['error', {words: true, nonwords: false}],
 
         // disallow control flow statements in finally blocks
         'no-unsafe-finally': 'error',
@@ -235,7 +299,7 @@ module.exports = {
         'no-this-before-super': 'error',
 
 
-        // Require using arrow functions for callbacks 
+        // Require using arrow functions for callbacks
         'prefer-arrow-callback': 'error',
 
         // enforces no braces where they can be omitted
@@ -250,28 +314,28 @@ module.exports = {
         // disallow multiple empty lines
         'no-multiple-empty-lines': [
             'warn',
-            {max: 2, maxBOF: 0, maxEOF: 0}
+            {max: 2, maxBOF: 0, maxEOF: 0},
         ],
 
         // enforce consistent indentation
-        'indent': ['warn', 4],
+        indent: ['warn', 4],
 
         // enforce a maximum line length
-        'max-len': ['warn', { code: 80, ignoreComments: true }],
+        'max-len': ['warn', {code: 80, ignoreComments: true}],
 
 
         // enforce the consistent use of either backticks, double, or single quotes
-        'quotes': ['error', 'single', { 'avoidEscape': true }],
+        quotes: ['error', 'single', {avoidEscape: true}],
 
 
         // Quoting Style for Property Names
         'quote-props': ['error', 'as-needed'],
 
         // Require Object Literal Shorthand Syntax
-        'object-shorthand': ['error', 'always', { avoidQuotes: true }],
+        'object-shorthand': ['error', 'always', {avoidQuotes: true}],
 
         // Require Brace Style
-        'brace-style': ['error', '1tbs', { allowSingleLine: true }],
+        'brace-style': ['error', '1tbs', {allowSingleLine: true}],
 
 
         // disallow trailing whitespace at the end of lines
@@ -286,7 +350,7 @@ module.exports = {
         // consistent spacing inside array brackets
         'array-bracket-spacing': ['error', 'never'],
 
-        // enforce consistent spacing inside braces of object literals, destructuring assignments, and import/export specifiers 
+        // enforce consistent spacing inside braces of object literals, destructuring assignments, and import/export specifiers
         'object-curly-spacing': ['error', 'never'],
 
         //enforce consistent spacing between keys and values in object literal properties
@@ -296,21 +360,62 @@ module.exports = {
         'block-spacing': ['error', 'always'],
 
         // Enforces spacing around commas
-        'comma-spacing': ['error', { before: false, after: true }],
+        'comma-spacing': ['error', {before: false, after: true}],
 
         // require or disallow spacing between function identifiers and their invocations
         'func-call-spacing': ['error', 'never'],
 
         // enforce consistent spacing before and after keywords
-        'keyword-spacing': ['error', { before: true, after: true }],
+        'keyword-spacing': ['error', {before: true, after: true}],
 
         // Require space before/after arrow function’s arrow
-        'arrow-spacing': ['error', { before: true, after: true }],
+        'arrow-spacing': ['error', {before: true, after: true}],
 
-        // Require or disallow a space before function parenthesis 
-        'space-before-function-paren': ['error', { anonymous: 'always', named: 'never' }],
+        // Require or disallow a space before function parenthesis
+        'space-before-function-paren': [
+            'error',
+            {anonymous: 'always', named: 'never'},
+        ],
 
         // Require Or Disallow Space Before Blocks
         'space-before-blocks': ['error', 'always'],
-    }
+
+
+        // enforces a maximum number of lines in a file
+        // 'max-lines': ['error', 500],
+
+        // enforces a maximum number of lines in a function
+        // 'max-lines-per-function': ['error', 50],
+
+
+        // https://github.com/SonarSource/eslint-plugin-sonarjs
+        // 'sonarjs/cognitive-complexity': ['error', 15],
+        'sonarjs/no-all-duplicated-branches': 'error',
+        'sonarjs/no-duplicated-branches': 'error',
+        'sonarjs/no-element-overwrite': 'error',
+        'sonarjs/no-extra-arguments': 'error',
+        'sonarjs/no-identical-conditions': 'error',
+        'sonarjs/no-identical-functions': 'error',
+        'sonarjs/no-identical-expressions': 'error',
+        'sonarjs/no-one-iteration-loop': 'error',
+        'sonarjs/no-redundant-boolean': 'error',
+        'sonarjs/no-small-switch': 'error',
+        'sonarjs/no-use-of-empty-return-value': 'error',
+        'sonarjs/prefer-immediate-return': 'error',
+        'sonarjs/prefer-single-boolean-return': 'error',
+        'sonarjs/prefer-while': 'error',
+
+
+        // Avoid wrapping values in Promise.resolve or Promise.reject when not needed.
+        'promise/no-return-wrap': 'error',
+
+        // Enforce consistent param names when creating new promises
+        'promise/param-names': 'error',
+
+        // Disallow return statements in finally()
+        'promise/no-return-in-finally': 'error',
+
+        // Ensures the proper number of arguments are passed to Promise functions
+        'promise/valid-params': 'error',
+    },
 };
