@@ -274,8 +274,15 @@ module.exports = {
         // require or disallow spaces before/after unary operators
         'space-unary-ops': ['error', {words: true, nonwords: false}],
 
+
         // disallow control flow statements in finally blocks
         'no-unsafe-finally': 'error',
+
+        // enforces the use of === and !== except for these cases:
+        // Comparing two literal values
+        // Evaluating the value of typeof
+        // Comparing against null
+        eqeqeq: ['error', 'smart'],
 
         // require calls to isNaN() when checking for NaN
         'use-isnan': 'error',
@@ -352,6 +359,9 @@ module.exports = {
 
         // enforce consistent spacing inside braces of object literals, destructuring assignments, and import/export specifiers
         'object-curly-spacing': ['error', 'never'],
+
+        // enforces zero spaces inside of parentheses
+        'space-in-parens': ['error', 'never'],
 
         //enforce consistent spacing between keys and values in object literal properties
         'key-spacing': 'error',
