@@ -5,6 +5,10 @@ module.exports = {
     },
     plugins: ['import', 'filenames', 'promise', 'sonarjs'],
     parserOptions: {
+        ecmaVersion: 9,
+        ecmaFeatures: {
+            impliedStrict: true,
+        },
         sourceType: 'module',
     },
     settings: {
