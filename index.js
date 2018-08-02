@@ -316,6 +316,9 @@ module.exports = {
         // disallow this/super before calling super() in constructors
         'no-this-before-super': 'error',
 
+        //  requires parentheses when invoking a constructor with no arguments
+        //  using the new keyword
+        'new-parens': 'error',
 
         // Require using arrow functions for callbacks
         'prefer-arrow-callback': 'error',
