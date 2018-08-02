@@ -297,7 +297,18 @@ module.exports = {
         'no-shadow-restricted-names': 'error',
 
         // require or disallow trailing commas
-        'comma-dangle': ['error', 'always-multiline'],
+        // requires trailing commas when the last element or property
+        // is in a different line than the closing ] or } and disallows
+        // trailing commas when the last element or property
+        // is on the same line as the closing ] or }
+        'comma-dangle': ['error', {
+            arrays: 'always-multiline',
+            objects: 'always-multiline',
+            imports: 'always-multiline',
+            exports: 'always-multiline',
+            // is set to "ignore" by default for consistency with the string option.
+            functions: 'always-multiline',
+        }],
 
         // require super() calls in constructors
         'constructor-super': 'error',
