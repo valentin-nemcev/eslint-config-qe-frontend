@@ -17,7 +17,7 @@ module.exports = {
             },
         },
         'import/ignore': [
-            /node_modules/,
+            /node_modules(?!\/frontend-commons)/,
             /\.(?!js$)[^.]+$/, // ignore everything but .js files
         ],
     },
@@ -142,6 +142,10 @@ module.exports = {
         // Match the file name against the default exported value in the module.
         'filenames/match-exported': 'error',
 
+        // should use fc alias instead
+        'no-restricted-imports': ['error', {
+            patterns: ['frontend-commons/*'],
+        }],
 
         // require or disallow strict mode directives
         strict: 'error',
