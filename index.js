@@ -6,22 +6,14 @@ module.exports = {
     plugins: ['import', 'filenames', 'promise', 'sonarjs'],
     parserOptions: {
         ecmaVersion: 9,
-        ecmaFeatures: {
-            impliedStrict: true,
-        },
+        ecmaFeatures: {impliedStrict: true},
         sourceType: 'module',
     },
     settings: {
         'import/resolver': {
             webpack: {
                 // using actual webpack config is impossible, we just duplicate relevant aliases
-                config: {
-                    resolve: {
-                        alias: {
-                            fc: 'frontend-commons',
-                        },
-                    },
-                },
+                config: {resolve: {alias: {fc: 'frontend-commons'}}},
             },
         },
         'import/ignore': [
@@ -230,10 +222,7 @@ module.exports = {
         'no-duplicate-case': 'error',
 
         // disallow empty block statements
-        'no-empty': [
-            'warn',
-            {allowEmptyCatch: true},
-        ],
+        'no-empty': ['warn', {allowEmptyCatch: true}],
 
         // disallow unnecessary boolean casts
         'no-extra-boolean-cast': 'error',
@@ -259,6 +248,9 @@ module.exports = {
 
         // disallow calling global object properties as functions
         'no-obj-calls': 'error',
+
+        // flag shorter notations for the type conversion, then suggest a more self-explanatory notation
+        'no-implicit-coercion': 'error',
 
         // disallow calling some Object.prototype methods directly on objects
         'no-prototype-builtins': 'error',
@@ -305,14 +297,17 @@ module.exports = {
         // is in a different line than the closing ] or } and disallows
         // trailing commas when the last element or property
         // is on the same line as the closing ] or }
-        'comma-dangle': ['error', {
-            arrays: 'always-multiline',
-            objects: 'always-multiline',
-            imports: 'always-multiline',
-            exports: 'always-multiline',
-            // is set to "ignore" by default for consistency with the string option.
-            functions: 'always-multiline',
-        }],
+        'comma-dangle': [
+            'error',
+            {
+                arrays: 'always-multiline',
+                objects: 'always-multiline',
+                imports: 'always-multiline',
+                exports: 'always-multiline',
+                // is set to "ignore" by default for consistency with the string option.
+                functions: 'always-multiline',
+            },
+        ],
 
         // require super() calls in constructors
         'constructor-super': 'error',
@@ -337,10 +332,7 @@ module.exports = {
         'eol-last': ['warn'],
 
         // disallow multiple empty lines
-        'no-multiple-empty-lines': [
-            'warn',
-            {max: 2, maxBOF: 0, maxEOF: 0},
-        ],
+        'no-multiple-empty-lines': ['warn', {max: 2, maxBOF: 0, maxEOF: 0}],
 
         // enforce consistent indentation
         indent: ['warn', 4],
@@ -408,6 +400,18 @@ module.exports = {
         // Require Or Disallow Space Before Blocks
         'space-before-blocks': ['error', 'always'],
 
+        //  consistent line breaks inside braces of object literals or destructuring assignments
+        'object-curly-newline': ['error', {multiline: true}],
+        'array-bracket-newline': ['error', {multiline: true}],
+
+        'object-property-newline': [
+            'error',
+            {allowAllPropertiesOnSameLine: true},
+        ],
+        'array-element-newline': ['error', 'consistent'],
+
+        // disallows empty lines at the beginning and ending of block statements and classes
+        'padded-blocks': ['error', 'never'],
 
         // enforces a maximum number of lines in a file
         // 'max-lines': ['error', 500],
