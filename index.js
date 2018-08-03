@@ -404,8 +404,8 @@ module.exports = {
         'space-before-blocks': ['error', 'always'],
 
         //  consistent line breaks inside braces of object literals or destructuring assignments
-        'object-curly-newline': ['error', {multiline: true}],
-        'array-bracket-newline': ['error', {multiline: true}],
+        'object-curly-newline': ['error', {consistent: true}],
+        'array-bracket-newline': ['error', 'consistent'],
 
         'object-property-newline': [
             'error',
