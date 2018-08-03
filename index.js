@@ -224,6 +224,9 @@ module.exports = {
         // disallow empty block statements
         'no-empty': ['warn', {allowEmptyCatch: true}],
 
+        // disallows if statements as the only statement in else blocks
+        'no-lonely-if': 'error',
+
         // disallow unnecessary boolean casts
         'no-extra-boolean-cast': 'error',
 
