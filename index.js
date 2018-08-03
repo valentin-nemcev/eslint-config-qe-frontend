@@ -406,6 +406,7 @@ module.exports = {
         //  consistent line breaks inside braces of object literals or destructuring assignments
         'object-curly-newline': ['error', {consistent: true}],
         'array-bracket-newline': ['error', 'consistent'],
+        'function-paren-newline': ['error', 'consistent'],
 
         'object-property-newline': [
             'error',
