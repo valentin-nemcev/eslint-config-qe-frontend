@@ -16,6 +16,10 @@ module.exports = {
                 config: {resolve: {alias: {fc: 'frontend-commons'}}},
             },
         },
+        'import/external-module-folders': [
+            'node_modules',
+            'workspace', // Group linked imports correctly, assuming they are in the `workspace` dir
+        ],
         'import/ignore': [
             /node_modules(?!\/frontend-commons)/,
             /\.(?!js$)[^.]+$/, // ignore everything but .js files
@@ -110,7 +114,7 @@ module.exports = {
 
 
         'import/order': [
-            'error',
+            'warn',
             {
                 groups: [
                     'builtin',
