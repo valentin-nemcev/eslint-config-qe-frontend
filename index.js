@@ -156,13 +156,7 @@ module.exports = {
 
 
         // Disallow Unused Expressions
-        'no-unused-expressions': [
-            'error',
-            {
-                allowShortCircuit: true,
-                allowTernary: true,
-            },
-        ],
+        'no-unused-expressions': 'error',
 
         // disallow unused variables
         'no-unused-vars': [
