@@ -266,6 +266,9 @@ module.exports = {
         // disallow confusing multiline expressions
         'no-unexpected-multiline': 'error',
 
+        // no multiple statements per line
+        'max-statements-per-line': ['error', {max: 1}],
+
         // enforces newlines between the operands of a ternary expression if the expression spans multiple lines.
         // 'multiline-ternary': ['error', 'always-multiline'],
 
