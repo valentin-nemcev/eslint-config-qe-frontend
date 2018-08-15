@@ -419,6 +419,9 @@ module.exports = {
         // disallows empty lines at the beginning and ending of block statements and classes
         'padded-blocks': ['error', 'never'],
 
+        // disallow whitespace before properties
+        'no-whitespace-before-property': 'warn',
+
         // enforces a maximum number of lines in a file
         // 'max-lines': ['error', 500],
 
