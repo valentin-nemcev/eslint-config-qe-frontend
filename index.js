@@ -41,6 +41,8 @@ module.exports = {
         // disallow unreachable code after return, throw, continue, and break statements
         'no-unreachable': 'warn',
 
+        // disallow throwing literals and other expressions which cannot possibly be an Error object
+        'no-throw-literal': 'error',
 
         // disallow control characters in regular expressions
         'no-control-regex': 'error',
@@ -162,9 +164,9 @@ module.exports = {
         'no-unused-vars': [
             'warn',
             {
-                varsIgnorePattern: '(^\\$Conkitty|^_$)',
-                argsIgnorePattern: '(^\\$Conkitty|^_$)',
-                args: 'after-used',
+                argsIgnorePattern: '^_.+',
+                varsIgnorePattern: '^_.+',
+                caughtErrorsIgnorePattern: '^_.+',
             },
         ],
 
